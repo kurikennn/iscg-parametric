@@ -1,0 +1,21 @@
+# 依存関係
+node_modules/
+
+# ビルド出力
+dist/
+
+# Vite
+.vite/
+
+# ログ
+*.log
+npm-debug.log*
+
+# 環境（秘密を含み得る）
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
