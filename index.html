@@ -1,108 +1,29 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>パラメトリック曲線：ベジェ vs Catmull-Rom</title>
-    <style>
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0;
-        height: 100%;
-        font-family: system-ui, sans-serif;
-        background: #0f1115;
-        color: #e8eaed;
-      }
-      #app {
-        position: relative;
-        width: 100%;
-        height: 100%;
-      }
-      canvas {
-        display: block;
-        width: 100%;
-        height: 100%;
-      }
-      #panel {
-        position: absolute;
-        top: 12px;
-        left: 12px;
-        max-width: min(420px, calc(100% - 24px));
-        padding: 14px 16px;
-        background: rgba(20, 24, 32, 0.92);
-        border: 1px solid #2a3140;
-        border-radius: 10px;
-        font-size: 13px;
-        line-height: 1.55;
-      }
-      #panel h1 {
-        margin: 0 0 8px;
-        font-size: 15px;
-        font-weight: 600;
-      }
-      #panel p {
-        margin: 0 0 10px;
-      }
-      #panel ul {
-        margin: 0 0 10px;
-        padding-left: 18px;
-      }
-      #legend {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-        margin-top: 8px;
-      }
-      .swatch {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .swatch i {
-        width: 22px;
-        height: 3px;
-        border-radius: 2px;
-        display: inline-block;
-      }
-      #hint {
-        margin-top: 8px;
-        font-size: 12px;
-        color: #9aa3b2;
-      }
-    </style>
+    <title>Parametric Curves</title>
+    <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
     <div id="app">
-      <div id="panel">
-        <h1>パラメトリック曲線の比較（自前アルゴリズム）</h1>
-        <p>
-          制御点はドラッグで移動できます。ベジェは<strong>De
-          Casteljau</strong>、Catmull-Rom は区間ごとの<strong>立方多項式（標準係数）</strong>で頂点列を生成しています。Three.js の曲線クラスは使っていません。
-        </p>
-        <ul>
-          <li>
-            <strong>ベジェ</strong>：制御多角形の両端を結ぶ曲線。中間の制御点は一般に曲線上に乗らない。
-          </li>
-          <li>
-            <strong>Catmull-Rom</strong>：各制御点を通る（端点の扱いは重複で補間）。区間ごとに隣接4点で決まる。
-          </li>
-        </ul>
-        <div id="legend">
-          <span class="swatch"
-            ><i style="background: #4fc3f7"></i>ベジェ（De Casteljau）</span
-          >
-          <span class="swatch"
-            ><i style="background: #ffb74d"></i>Catmull-Rom</span
-          >
-          <span class="swatch"
-            ><i style="background: #90a4ae; height: 8px; width: 8px"></i
-            >制御点・多角形</span
-          >
+      <div id="ui">
+        <div id="ui-top">
+          <nav id="nav">← Back</nav>
+          <h1>Parametric Curves<br /><span>Three.js demo by Kengo Kuriaki</span></h1>
+          <p id="desc">
+            Interactive Three.js visualizaiton comparing Bézier curve and Catmull-Rom Curve
+          </p>
         </div>
-        <p id="hint">左ドラッグ：点の移動 / 右ドラッグ：視点回転 / ホイール：ズーム</p>
+        <div id="ui-bottom">
+          <div id="legend">
+            <span class="swatch"><i style="background: #4fc3f7"></i>Bézier</span>
+            <span class="swatch"><i style="background: #ffb74d"></i>Catmull-Rom</span>
+            <span class="swatch"><i class="dot" style="background: #90a4ae"></i>Control point</span>
+          </div>
+          <p id="hint">Left drag: move point / Right drag: rotate view / Scroll: zoom</p>
+        </div>
       </div>
     </div>
     <script type="module" src="/src/main.js"></script>
