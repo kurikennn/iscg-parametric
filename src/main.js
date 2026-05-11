@@ -57,7 +57,7 @@ function setLinePositions(line, points) {
 
 const container = document.getElementById("app");
 const scene = new Scene();
-scene.background = new Color(0x000000);
+scene.background = new Color(0x1a2230);
 
 const camera = new PerspectiveCamera(50, 1, 0.1, 200);
 camera.position.set(0, 9, 11);
