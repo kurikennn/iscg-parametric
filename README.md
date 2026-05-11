@@ -2,6 +2,8 @@
 
 An interactive demo built with JavaScript and Three.js that compare Bézier curve and Catmull-Rom Curve, allowing you to compare their shapes using the same set of control points.
 
+![Demo Screenshot](Display.png)
+
 ## Prerequisites
 
 - [Nix](https://nixos.org/) (`nix develop` must be available)
